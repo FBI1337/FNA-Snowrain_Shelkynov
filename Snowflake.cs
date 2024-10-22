@@ -1,9 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace FNA_Snowrain_Shelkynov
 {
@@ -16,12 +12,12 @@ namespace FNA_Snowrain_Shelkynov
         /// <summary>
         /// Конструктор снежинки. Инициализирует скорость, размер, позицию и текстуру
         /// </summary>
-        public Snowflake(Vector2 position, float speed, float size, Texture2D texture)
+        public Snowflake(Texture2D texture, Vector2 startPosition, float speed, float size)
         {
-            this.position = position;
+            this.texture = texture;
+            position = startPosition;
             this.speed = speed;
             this.size = size;
-            this.texture = texture;
         }
         /// <summary>
         /// Пдание снежинки
