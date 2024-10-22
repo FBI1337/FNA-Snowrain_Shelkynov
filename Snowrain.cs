@@ -12,9 +12,10 @@ namespace FNA_Snowrain_Shelkynov
         SpriteBatch spriteBatch;
 
         private Texture2D spriteTexture;
+        private Texture2D backgroundTexture;
         private List<Snowflake> sprite;
         private readonly Random random = new Random();
-        private const int WindowHeight = 1920;
+        private const int WindowHeight = 1980;
         private const int WindowWidth = 1080;
         /// <summary>
         /// Это конструктор снегопада. Инициализирует все параметры графики
@@ -45,6 +46,7 @@ namespace FNA_Snowrain_Shelkynov
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             spriteTexture = Content.Load<Texture2D>("Snowflake");
+            backgroundTexture = Content.Load<Texture2D>("background");
             sprite = new List<Snowflake>();
 
             for (var i = 0; i < 200; i++)
@@ -84,11 +86,15 @@ namespace FNA_Snowrain_Shelkynov
             GraphicsDevice.Clear(Color.White);
 
             spriteBatch.Begin();
+
+            spriteBatch.Draw(backgroundTexture, new Rectangle(0, 0, WindowWidth, WindowHeight), Color.White);
+
             foreach (var sprite in sprite)
             {
                 sprite.Draw(spriteBatch);
             }
             spriteBatch.End();
+
             base.Draw(gameTime);
         }
     }
